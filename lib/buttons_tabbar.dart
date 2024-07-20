@@ -415,7 +415,9 @@ class _ButtonsTabBarState extends State<ButtonsTabBar>
                         tab.text!,
                         style: textStyle,
                       )
-                    : (tab.child ?? Container())
+                    : textStyle != null && tab.child != null
+                        ? DefaultTextStyle(style: textStyle, child: tab.child!)
+                        : tab.child ?? Container()
               ],
             ),
           ),
